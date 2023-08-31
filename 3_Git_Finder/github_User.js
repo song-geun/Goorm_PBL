@@ -171,6 +171,7 @@ class github_User {
         });
         init.then((value) => {
             if (value) {
+                refresh();
                 profile_generate(this.data);
                 const repo = new Promise((resolve2, reject) => {
                     resolve2(this.repo());
