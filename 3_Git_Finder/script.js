@@ -96,10 +96,11 @@ function repo_generate(repolist) {
 }
 
 function refresh() {
-    let del4 = document.querySelector('.repo_list_title');
-    if (del4 == undefined)
-        return;
     let del2 = document.querySelector('.profile_content_header');
+    let del4 = document.querySelector('.repo_list_title');
+    if (del2 == undefined)
+        return;
+    
     while (del2.firstChild)
         del2.removeChild(del2.firstChild);
     let del5 = document.querySelector('.profile_content_main');
@@ -116,7 +117,16 @@ function refresh() {
     del4.remove();
     del3.remove();
 }
-
+function refresh_profile() {
+    let del2 = document.querySelector('.profile_content_header');
+    if(del2 == undefined)
+        return ;
+    while (del2.firstChild)
+        del2.removeChild(del2.firstChild);
+    let del5 = document.querySelector('.profile_content_main');
+    while (del5.firstChild)
+        del5.removeChild(del5.firstChild);
+}
 function refresh_repos() {
     let del4 = document.querySelector('.repo_list_title');
     if (del4 == undefined)
