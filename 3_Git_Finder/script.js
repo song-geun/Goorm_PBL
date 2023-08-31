@@ -144,9 +144,3 @@ document.querySelector('#button1').
         e.target.value = "";
     }
     );
-
-
-
-
-
-
