@@ -25,7 +25,7 @@ class github_User {
         public_gists: 0,
         public_repos: 0,
         received_events_url: "",
-        repos_url: "",
+        repos_url: null,
         site_admin: false,
         starred_url: "",
         subscriptions_url: "",
@@ -142,7 +142,8 @@ class github_User {
     }
     async repo() {
         let jobs = [];
-
+        if(this.data == undefined)
+            return false;
         let job = fetch(this.data.repos_url).then(
             successResponse => {
                 if (successResponse.status != 200)
@@ -170,8 +171,13 @@ class github_User {
                     resolve2(this.repo());
                 });
                 repo.then(value => {
-                    if (value)
-                        this.Allfound();
+                    if(value)
+                        console.log('ok');
+                    else
+                        console.log('fail');
+                })
+                repo.catch(value =>{
+                    console.log('error');
                 })
             }
         });
@@ -180,5 +186,9 @@ class github_User {
     }
     rename(names){
         this.names = names;
+    }
+    Allfound()
+    {
+
     }
 }
