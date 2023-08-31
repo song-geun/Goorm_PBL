@@ -52,6 +52,7 @@ function profile_generate(data) {
 }
 function repo_generate(repolist) {
     title = document.createElement('h1');
+    title.className = 'repo_list_title'
     title.textContent = 'Lastest Repos';
     document.querySelector('.repolistTitle').append(title);
     lists = document.createElement('div');
@@ -64,10 +65,10 @@ function repo_generate(repolist) {
         repo_name.className = 'repo_name';
         repo_name.textContent = element.name;
         repo_name.setAttribute('href', element.html_url);
-        
+
         repolists_info = document.createElement('div');
         repolists_info.className = "repolists_info";
-        
+
         stars = document.createElement('div');
         stars.className = "repolists_info_stars";
         stars.textContent = "Stars: " + element.stargazers_count;
@@ -80,13 +81,13 @@ function repo_generate(repolist) {
         forks.className = "repolists_info_forks";
         forks.textContent = "forks: " + element.forks;
 
-        repolists_info.append(stars);
-        repolists_info.append(watchers);
-        repolists_info.append(forks);
+        repolists_info.appendChild(stars);
+        repolists_info.appendChild(watchers);
+        repolists_info.appendChild(forks);
 
-        
-        list.append(repo_name);
-        list.append(repolists_info);
+
+        list.appendChild(repo_name);
+        list.appendChild(repolists_info);
 
         lists.appendChild(list);
     });
@@ -95,5 +96,22 @@ function repo_generate(repolist) {
 }
 
 function refresh() {
-
+    let del4 = document.querySelector('.repo_list_title');
+    if (del4 == undefined)
+        return;
+    console.log(1);
+    let del2 = document.querySelector('.profile_content_header');
+    while (del2.firstChild)
+        del2.removeChild(del2.firstChild);
+    let del5 = document.querySelector('.profile_content_main');
+    while (del5.firstChild)
+        del5.removeChild(del5.firstChild);
+    let del3 = document.querySelector('.repolists');
+    while (del3.firstChild)
+        del3.removeChild(del3.firstChild);
+    let del1 = document.querySelector('.profile_left');
+    while (del1.firstChild)
+        del1.removeChild(del1.firstChild);
+    while (del4.firstChild)
+        del4.removeChild(del4.firstChild);
 }

@@ -165,6 +165,7 @@ class github_User {
         return true;
     }
     async connect() {
+        
         const init = new Promise((resolve, reject) => {
             resolve(this.init());
         });
