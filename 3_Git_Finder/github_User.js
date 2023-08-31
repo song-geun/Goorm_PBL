@@ -34,7 +34,7 @@ class github_User {
         updated_at: "",
         url: ""
     };
-    repoarr = {
+    repolist = {
         allow_forking
             :
             true,
@@ -138,6 +138,9 @@ class github_User {
         let result;
         results.forEach(i => { result = i });
         this.data = JSON.parse(JSON.stringify(result));
+        if(this.data == undefined)
+            return false;
+        console.log(this.data);
         return true;
     }
     async repo() {
@@ -157,8 +160,8 @@ class github_User {
         );
         jobs.push(job);
         let results = await Promise.all(jobs);
-        this.repoarr=results
         
+        this.repolist=results
         return true;
     }
     async connect() {
@@ -167,12 +170,16 @@ class github_User {
         });
         init.then((value) => {
             if (value) {
+                profile_generate(this.data);
                 const repo = new Promise((resolve2, reject) => {
                     resolve2(this.repo());
                 });
                 repo.then(value => {
                     if(value)
+                    {
+                        repo_generate(this.repolist);
                         console.log('ok');
+                    }
                     else
                         console.log('fail');
                 })
@@ -180,15 +187,15 @@ class github_User {
                     console.log('error');
                 })
             }
+            else
+            {
+                console.log('fail');
+            }
         });
     }
     constructor() {
     }
     rename(names){
         this.names = names;
-    }
-    Allfound()
-    {
-
     }
 }
