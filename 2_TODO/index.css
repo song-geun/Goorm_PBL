@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+.main{
+    padding: 200px;
+    background-color: white;
+}
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #9395D3;
+    font-size: 50px;
+    border-radius: 50px;
+    color: white;
+}
+#button1{
+    border: none;
+    border-bottom: solid 2px white;
+    background-color: #9395D3;
+    font-size: 32px;
+    color: white;
+}
+.TODOlist{
+    padding: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.NonClear{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color : #B3B7EE;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.hidden
+{
+    visibility: hidden;
+}
