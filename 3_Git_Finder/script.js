@@ -56,7 +56,7 @@ function repo_generate(repolist) {
     title.textContent = 'Lastest Repos';
     document.querySelector('.repolistTitle').append(title);
     lists = document.createElement('div');
-    lists.className = 'repolists';
+    lists.className = 'repolist1';
     repolist.forEach(element => {
         console.log(element);
         list = document.createElement('div');
@@ -91,7 +91,7 @@ function repo_generate(repolist) {
 
         lists.appendChild(list);
     });
-    document.querySelector('.repoList').append(lists);
+    document.querySelector('.repoList').appendChild(lists);
 
 }
 
@@ -106,7 +106,7 @@ function refresh() {
     let del5 = document.querySelector('.profile_content_main');
     while (del5.firstChild)
         del5.removeChild(del5.firstChild);
-    let del3 = document.querySelector('.repolists');
+    let del3 = document.querySelector('.repolist1');
     while (del3.firstChild)
         del3.removeChild(del3.firstChild);
     let del1 = document.querySelector('.profile_left');
@@ -114,6 +114,7 @@ function refresh() {
         del1.removeChild(del1.firstChild);
     while (del4.firstChild)
         del4.removeChild(del4.firstChild);
+    del4.remove();
 }
 
 const abc = new github_User();
