@@ -19,7 +19,7 @@ function profile_generate(data) {
 
     following = document.createElement('div');
     following.className = "following";
-    following.textContent = "Public Gists: " + data.following;
+    following.textContent = "following: " + data.following;
 
     company = document.createElement('div');
     company.className = "company";

@@ -38,4 +38,85 @@
 .profile_left{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.photo{
+    width: 80%;
+    height: 90%;
+}
+.view_profile{
+    width: 80%;
+    height: 10%;
+    margin: 2px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
+.profile_content{
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.profile_content_header{
+    
+    display: flex;
+    flex-direction: row;
+}
+.public_repos{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 8px;
+    background-color: blue;
+    color:  white;
+}
+.public_Gists{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 8px;
+    background-color: blue;
+    color:  white;
+}
+
+.followers
+{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 8px;
+    background-color: blue;
+    color:  white;
+}
+.following
+{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 8px;
+    background-color: blue;
+    color:  white;
+}
+.company{
+    padding: 5px;
+    width: 100%;
+    border: solid gray 1px;
+    font-size: 25px;
+}
+.blog{
+    padding: 5px;
+    width: 100%;
+    border: solid gray 1px;
+    font-size: 25px;
+}
+.location{
+    padding: 5px;
+    width: 100%;
+    border: solid gray 1px;
+    font-size: 25px;
+}
+.create{
+    padding: 5px;
+    width: 100%;
+    border: solid gray 1px;
+    font-size: 25px;
 }
