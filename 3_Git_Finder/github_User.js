@@ -160,8 +160,8 @@ class github_User {
         );
         jobs.push(job);
         let results = await Promise.all(jobs);
-        
-        this.repolist=results
+        results.forEach(i => {this.repolist = i});
+        console.log(this.repolist);
         return true;
     }
     async connect() {
@@ -178,7 +178,6 @@ class github_User {
                     if(value)
                     {
                         repo_generate(this.repolist);
-                        console.log('ok');
                     }
                     else
                         console.log('fail');

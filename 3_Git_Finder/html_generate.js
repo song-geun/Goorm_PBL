@@ -1,8 +1,7 @@
-function profile_generate(data)
-{
+function profile_generate(data) {
     photo = document.createElement('img');
     photo.className = "photo";
-    photo.setAttribute('src',data.avatar_url);
+    photo.setAttribute('src', data.avatar_url);
     view_profile = document.createElement('a');
     view_profile.className = "view_profile";
     view_profile.textContent = "View Profile";
@@ -24,19 +23,19 @@ function profile_generate(data)
 
     company = document.createElement('div');
     company.className = "company";
-    company.textContent = "company : "+(data.company == null ? "" : data.company);
+    company.textContent = "company : " + (data.company == null ? "" : data.company);
 
     blog = document.createElement('div');
     blog.className = "blog";
-    blog.textContent = "blog : "+ (data.blog == null ? "" : data.blog);
+    blog.textContent = "blog : " + (data.blog == null ? "" : data.blog);
 
     location1 = document.createElement('div');
     location1.className = "location";
-    location1.textContent = "location : "+ (data.location == null ? "" : data.location);
+    location1.textContent = "location : " + (data.location == null ? "" : data.location);
 
     create = document.createElement('div');
     create.className = "create";
-    create.textContent = "Member Since : "+ data.created_at;
+    create.textContent = "Member Since : " + data.created_at;
 
     document.querySelector('.profile_left').append(photo);
     document.querySelector('.profile_left').append(view_profile);
@@ -51,22 +50,29 @@ function profile_generate(data)
     document.querySelector('.profile_content_main').append(create);
 
 }
-function repo_generate(repolist)
-{
+function repo_generate(repolist) {
     title = document.createElement('h1');
-    title.className = 'repolisttitle';
+    title.textContent = 'Lastest Repos';
     document.querySelector('.repolistTitle').append(title);
     lists = document.createElement('div');
     lists.className = 'repolists';
     repolist.forEach(element => {
+        console.log(element);
         list = document.createElement('div');
         list.className = 'repolist';
-        
-        lists.append()
-    }); 
+        repo_name = document.createElement('a');
+        repo_name.className = 'repo_name';
+        repo_name.textContent = element.name;
+        repo_name.setAttribute('href', element.html_url);
+        list.appendChild(repo_name);
+
+
+
+        lists.appendChild(list);
+    });
+
 }
-    
-function refresh()
-{
+
+function refresh() {
 
 }
