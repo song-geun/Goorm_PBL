@@ -115,6 +115,10 @@ function refresh() {
     while (del4.firstChild)
         del4.removeChild(del4.firstChild);
     del4.remove();
+    del1.remove();
+    del3.remove();
+    del5.remove();
+    del2.remove();
 }
 
 const abc = new github_User();
