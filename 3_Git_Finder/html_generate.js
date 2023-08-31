@@ -64,11 +64,11 @@ function repo_generate(repolist) {
         repo_name.className = 'repo_name';
         repo_name.textContent = element.name;
         repo_name.setAttribute('href', element.html_url);
-        list.appendChild(repo_name);
+        list.appendchild(repo_name);
 
 
 
-        lists.appendChild(list);
+        lists.appendchild(list);
     });
 
 }
