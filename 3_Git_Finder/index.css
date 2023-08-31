@@ -1,3 +1,41 @@
 *{
     box-sizing: border-box;
 }
+
+.header{
+    background-color: blue;
+    color: white;
+    font-size: 32px;
+    padding: 10px 0px 10px 5px;
+}
+
+.wrep{
+    display: flex;
+    flex-direction: column;
+
+}
+.search{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 5px;
+    border: solid black 1px;
+    border-radius: 5px;
+}
+.gihub{
+    font-size: 24px;
+    padding : 5px;
+}
+#button1{
+    width: 100%;
+    font-size: 24px;
+    border-radius: 5px;
+}
+.profile{
+    display: flex;
+    flex-direction: row;
+}
+.profile_left{
+    display: flex;
+    flex-direction: column;
+}
