@@ -179,6 +179,7 @@ class github_User {
                 repo.then(value => {
                     if(value)
                     {
+                        refresh_repos();
                         repo_generate(this.repolist);
                     }
                     else
