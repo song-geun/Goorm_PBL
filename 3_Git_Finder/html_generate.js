@@ -59,17 +59,38 @@ function repo_generate(repolist) {
     repolist.forEach(element => {
         console.log(element);
         list = document.createElement('div');
-        list.className = 'repolist';
+        list.className = 'repolists';
         repo_name = document.createElement('a');
         repo_name.className = 'repo_name';
         repo_name.textContent = element.name;
         repo_name.setAttribute('href', element.html_url);
-        list.appendchild(repo_name);
+        
+        repolists_info = document.createElement('div');
+        repolists_info.className = "repolists_info";
+        
+        stars = document.createElement('div');
+        stars.className = "repolists_info_stars";
+        stars.textContent = "Stars: " + element.stargazers_count;
 
+        watchers = document.createElement('div');
+        watchers.className = "repolists_info_watchers";
+        watchers.textContent = "Watchers: " + element.watchers;
 
+        forks = document.createElement('div');
+        forks.className = "repolists_info_forks";
+        forks.textContent = "forks: " + element.forks;
 
-        lists.appendchild(list);
+        repolists_info.append(stars);
+        repolists_info.append(watchers);
+        repolists_info.append(forks);
+
+        
+        list.append(repo_name);
+        list.append(repolists_info);
+
+        lists.appendChild(list);
     });
+    document.querySelector('.repoList').append(lists);
 
 }
 
