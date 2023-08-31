@@ -98,7 +98,7 @@ function repo_generate(repolist) {
 function refresh() {
     let del2 = document.querySelector('.profile_content_header');
     let del4 = document.querySelector('.repo_list_title');
-    if (del2 == undefined)
+    if (del4 == undefined)
         return;
     
     while (del2.firstChild)
