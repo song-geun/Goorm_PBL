@@ -3,4 +3,10 @@ document.getElementById("sheetjsexport").addEventListener('click', function () {
     XLSX.writeFile(wb, "SheetJSTable.xlsx");
 });
 
+document.querySelector('*').addEventListener('click',
+    (e)=> {
+        let now = e.target.id;
+        console.log(now);
+    });
+
 excel = new Excel();
