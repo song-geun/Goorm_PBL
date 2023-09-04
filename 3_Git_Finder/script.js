@@ -97,44 +97,70 @@ function repo_generate(repolist) {
 
 function refresh() {
     let del1 = document.querySelector('.profile_left');
-    if (del1 == undefined)
-        return;
+    if (del1 != undefined)
+    {
+        while (del1.firstChild)
+            del1.removeChild(del1.firstChild);
+    }
     let del2 = document.querySelector('.profile_content_header');
-    let del4 = document.querySelector('.repo_list_title');
-    while (del2.firstChild)
-        del2.removeChild(del2.firstChild);
-    let del5 = document.querySelector('.profile_content_main');
-    while (del5.firstChild)
-        del5.removeChild(del5.firstChild);
+    if (del2 != undefined)
+    {
+        while (del2.firstChild)
+            del2.removeChild(del2.firstChild);
+    }
     let del3 = document.querySelector('.repolist1');
-    while (del3.firstChild)
-        del3.removeChild(del3.firstChild);
-
-    while (del1.firstChild)
-        del1.removeChild(del1.firstChild);
-    while (del4.firstChild)
-        del4.removeChild(del4.firstChild);
+    if (del3 != undefined)
+    {
+        while (del3.firstChild)
+            del3.removeChild(del3.firstChild);
+    }
+    let del4 = document.querySelector('.repo_list_title');
+    if (del4 != undefined)
+    {
+        while (del4.firstChild)
+            del4.removeChild(del4.firstChild);
+    }
+    let del5 = document.querySelector('.profile_content_main');
+    if (del5 != undefined)
+    {
+        while (del5.firstChild)
+            del5.removeChild(del5.firstChild);
+    }
+    
 }
 function refresh_profile() {
     let del1 = document.querySelector('.profile_left');
-    if (del1 == undefined)
-        return;
-    while (del1.firstChild)
-        del1.removeChild(del1.firstChild);
+    if (del1 != undefined)
+    {
+        while (del1.firstChild)
+            del1.removeChild(del1.firstChild);
+    }
     let del2 = document.querySelector('.profile_content_header');
-    while (del2.firstChild)
-        del2.removeChild(del2.firstChild);
+    if (del2 != undefined)
+    {
+        while (del2.firstChild)
+            del2.removeChild(del2.firstChild);
+    }
     let del5 = document.querySelector('.profile_content_main');
-    while (del5.firstChild)
-        del5.removeChild(del5.firstChild);
+    if (del5 != undefined)
+    {
+        while (del5.firstChild)
+            del5.removeChild(del5.firstChild);
+    }
 }
 function refresh_repos() {
-    let del4 = document.querySelector('.repo_list_title');
-    if (del4 == undefined)
-        return;
     let del3 = document.querySelector('.repolist1');
-    while (del3.firstChild)
-        del3.removeChild(del3.firstChild);
+    if (del3 != undefined)
+    {
+        while (del3.firstChild)
+            del3.removeChild(del3.firstChild);
+    }
+    let del4 = document.querySelector('.repo_list_title');
+    if (del4 != undefined)
+    {
+        while (del4.firstChild)
+            del4.removeChild(del4.firstChild);
+    }
 }
 
 const abc = new github_User();
