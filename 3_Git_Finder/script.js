@@ -114,8 +114,6 @@ function refresh() {
         del1.removeChild(del1.firstChild);
     while (del4.firstChild)
         del4.removeChild(del4.firstChild);
-    del4.remove();
-    del3.remove();
 }
 function refresh_profile() {
     let del2 = document.querySelector('.profile_content_header');
@@ -137,7 +135,6 @@ function refresh_repos() {
     let del1 = document.querySelector('.profile_left');
     while (del1.firstChild)
         del1.removeChild(del1.firstChild);
-    del3.remove();
 }
 
 const abc = new github_User();
