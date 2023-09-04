@@ -1,19 +1,20 @@
 excel = new Excel();
 excel.init();
-
 document.getElementById("sheetjsexport").addEventListener('click', function () {
     var wb = XLSX.utils.table_to_book(document.getElementById("TableToExport"));
     XLSX.writeFile(wb, "SheetJSTable.xlsx");
 });
 
 document.querySelector('#TableToExport').addEventListener('click',
-    (e)=> {
+    (e) => {
         let now = e.target.id;
-        console.log(now);
+        let input1 = document.querySelector('.' + now);
+        input1.className = "readwrite";
+        input1.addEventListener('keyup', (e) => {
+            if (e.key !== 'Enter') return;
+        
+            input1.className = input1.id;
+        });
     });
 
-    document.querySelector('#TableToExport').addEventListener('dbclick',
-    (e)=> {
-        let now = e.target.id;
-        console.log(now);
-    });
+

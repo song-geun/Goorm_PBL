@@ -8,5 +8,18 @@ table{
     border-collapse: collapse;
 }
 th, td{
+    width: 48px;
+    height: 24px;
     border:  1px solid black;
+}
+input{
+    width: 90%;
+    height: 80%;
+}
+
+
+.readwrite {
+    -moz-user-modify: read-write-plaintext-only;
+    -webkit-user-modify: read-write-plaintext-only;
+    text-decoration-skip-ink: none;
 }
