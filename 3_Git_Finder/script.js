@@ -108,7 +108,7 @@ function refresh() {
         while (del2.firstChild)
             del2.removeChild(del2.firstChild);
     }
-    let del3 = document.querySelector('.repolist1');
+    let del3 = document.querySelector('.repoList');
     if (del3 != undefined)
     {
         while (del3.firstChild)
@@ -150,7 +150,7 @@ function refresh_profile() {
     }
 }
 function refresh_repos() {
-    let del3 = document.querySelector('.repolist1');
+    let del3 = document.querySelector('.repoList');
     if (del3 != undefined)
     {
         while (del3.firstChild)
