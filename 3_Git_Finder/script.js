@@ -119,6 +119,7 @@ function refresh() {
     {
         while (del4.firstChild)
             del4.removeChild(del4.firstChild);
+        del4.remove();
     }
     let del5 = document.querySelector('.profile_content_main');
     if (del5 != undefined)
@@ -160,6 +161,7 @@ function refresh_repos() {
     {
         while (del4.firstChild)
             del4.removeChild(del4.firstChild);
+        del4.remove();
     }
 }
 
