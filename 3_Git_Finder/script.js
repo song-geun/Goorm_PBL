@@ -116,9 +116,12 @@ function refresh() {
         del4.removeChild(del4.firstChild);
 }
 function refresh_profile() {
-    let del2 = document.querySelector('.profile_content_header');
-    if (del2 == undefined)
+    let del1 = document.querySelector('.profile_left');
+    if (del1 == undefined)
         return;
+    while (del1.firstChild)
+        del1.removeChild(del1.firstChild);
+    let del2 = document.querySelector('.profile_content_header');
     while (del2.firstChild)
         del2.removeChild(del2.firstChild);
     let del5 = document.querySelector('.profile_content_main');
