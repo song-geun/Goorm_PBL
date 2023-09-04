@@ -97,7 +97,6 @@ function repo_generate(repolist) {
 
 function refresh() {
     let del1 = document.querySelector('.profile_left');
-
     if (del1 == undefined)
         return;
     let del2 = document.querySelector('.profile_content_header');
@@ -133,9 +132,6 @@ function refresh_repos() {
     let del3 = document.querySelector('.repolist1');
     while (del3.firstChild)
         del3.removeChild(del3.firstChild);
-    let del1 = document.querySelector('.profile_left');
-    while (del1.firstChild)
-        del1.removeChild(del1.firstChild);
 }
 
 const abc = new github_User();
