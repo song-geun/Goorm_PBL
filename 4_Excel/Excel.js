@@ -41,12 +41,8 @@ class Excel {
             sheet[j].appendChild(now);
             for (let i = 1; i < 27; i++) {
                 let now = document.createElement('td');
-                let now1 = document.createElement('span');
                 now.id = String.fromCharCode(Number(64) + Number(i)) +'-' + j;
-                now1.id = String.fromCharCode(Number(64) + Number(i))+'-' + j;
                 now.classname = "TD1";
-                now1.className = String.fromCharCode(Number(64) + Number(i)) + j;
-                now1.textContent = "";
                 now.addEventListener("keyup", KeyboardEvents);
                 now.addEventListener("click", clickEvents);
                 now.appendChild(now1);

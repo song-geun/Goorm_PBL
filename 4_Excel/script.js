@@ -21,9 +21,9 @@ const clickEvents = (e) => {
         cur = document.getElementById(seleted);
         curcol = document.getElementById(col);
         currow = document.getElementById(row);
-        curcol.classList.toggle("sel");
-        currow.classList.toggle("sel");
-        cur.classList.toggle("readwrite");
+        curcol.classList.remove("sel");
+        currow.classList.remove("sel");
+        cur.classList.remove("readwrite");
 
     }
     console.log(e.target.id);
