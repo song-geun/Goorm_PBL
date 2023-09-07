@@ -1,20 +1,37 @@
-excel = new Excel();
-excel.init();
+
+let seleted = undefined;
+
+
 document.getElementById("sheetjsexport").addEventListener('click', function () {
     var wb = XLSX.utils.table_to_book(document.getElementById("TableToExport"));
     XLSX.writeFile(wb, "SheetJSTable.xlsx");
 });
 
-document.querySelector('#TableToExport').addEventListener('click',
-    (e) => {
-        let now = e.target.id;
-        let input1 = document.querySelector('.' + now);
-        input1.className = "readwrite";
-        input1.addEventListener('keyup', (e) => {
-            if (e.key !== 'Enter') return;
-        
-            input1.className = input1.id;
-        });
-    });
+const KeyboardEvents = (e) => {
+    if (e.key !== 'Enter') return;
+    const [col, row] = seleted.split("-");
+    curcol = document.getElementById(col);
+    currow = document.getElementById(row);
+    e.target.classList.remove("readwrite");
+}
 
+const clickEvents = (e) => {
+    if (seleted != undefined) {
+        const [col, row] = seleted.split("-");
+        cur = document.getElementById(seleted);
+        curcol = document.getElementById(col);
+        currow = document.getElementById(row);
+        curcol.classList.toggle("sel");
+        currow.classList.toggle("sel");
+        cur.classList.toggle("readwrite");
 
+    }
+    console.log(e.target.id);
+    seleted = e.target.id;
+    const [col, row] = seleted.split("-");
+    curcol = document.getElementById(col);
+    currow = document.getElementById(row);
+    curcol.classList.toggle("sel");
+    currow.classList.toggle("sel");
+    e.target.classList.toggle("readwrite");
+}
