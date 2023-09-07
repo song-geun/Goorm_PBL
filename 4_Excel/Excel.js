@@ -32,12 +32,9 @@ class Excel {
             sheet[j] = document.createElement('tr');
             sheet[j].classname = 'a1' + j;
             let now = document.createElement('td');
-            let now1 = document.createElement('div');
             now.id = j;
-            now1.id = j;
             now.classname = "unsel";
-            now1.textContent= now1.id;
-            now.appendChild(now1);
+            now.textContent = j;
             sheet[j].appendChild(now);
             for (let i = 1; i < 27; i++) {
                 let now = document.createElement('td');
