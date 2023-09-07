@@ -61,5 +61,5 @@ class Excel {
 }
 
 
-excel = new Excel();
+let excel = new Excel();
 excel.init();
