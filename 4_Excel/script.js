@@ -31,7 +31,10 @@ const clickEvents = (e) => {
     const [col, row] = seleted.split("-");
     curcol = document.getElementById(col);
     currow = document.getElementById(row);
+    curcel = document.getElementById("cellstatus");
+    curcel.textContent = col + row;
     curcol.classList.toggle("sel");
     currow.classList.toggle("sel");
     e.target.classList.toggle("readwrite");
 }
+
