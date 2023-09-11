@@ -13,7 +13,7 @@ class Excel {
         let now1 = document.createElement('div');
         now.id = String.fromCharCode(Number(64));
         now1.id = String.fromCharCode(Number(64));
-        now.classname = "";
+        now.className = "unsel";
         now1.textContent= "";
         now.appendChild(now1);
         abc.appendChild(now);
@@ -22,7 +22,7 @@ class Excel {
             let now1 = document.createElement('div');
             now.id = String.fromCharCode(Number(64) + Number(i));
             now1.id = String.fromCharCode(Number(64) + Number(i));
-            now.classname = "unsel";
+            now.className = "unsel";
             now1.textContent= now1.id;
             now.appendChild(now1);
             abc.appendChild(now);
@@ -33,7 +33,7 @@ class Excel {
             sheet[j].classname = 'a1' + j;
             let now = document.createElement('td');
             now.id = j;
-            now.classname = "unsel";
+            now.className = "unsel";
             now.textContent = j;
             sheet[j].appendChild(now);
             for (let i = 1; i < 27; i++) {
