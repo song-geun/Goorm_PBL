@@ -15,10 +15,15 @@
   border-radius: 10px;
   box-shadow: -9px 17px 13px rgb(0 0 0 / 16%);
 }
+
 .list_add_left {
   flex-direction: column;
   padding-top: 20px;
   width: 50%;
+}
+
+.main_list{
+  padding-top: 50px;
 }
 
 .list_add_right {
@@ -26,6 +31,7 @@
   padding-top: 20px;
   width: 50%;
 }
+
 .lists{
   display: flex;
   flex-direction: row;
@@ -33,11 +39,20 @@
 
 .main_list_left{
   width: 40%;
+  padding: 5px;
 }
 
 
 .main_list_middle{
   width: 40%;
+  padding: 5px;
 }
 
 
+.btn{
+  padding-top: 10px; 
+}
+
+.input1{
+  width: 90%;
+}

@@ -7,7 +7,7 @@ export default class App extends Component {
     ],
     name: "",
     value: "",
-    selectable : false
+    selectable: false
   }
   input =
     { flex: '10', padding: 'px' }
@@ -44,9 +44,9 @@ export default class App extends Component {
     this.total = 0;
   }
 
-  handleedit = (e)=>{
+  handleedit = (e) => {
     e.preventDefault();
-    
+
   }
 
 
@@ -54,6 +54,10 @@ export default class App extends Component {
 
   render() {
     this.total = 0;
+    this.state.listdata.forEach((data) => {
+      if (data.value !== undefined)
+        this.total += Number(data.value);
+    })
     return (
       <div className='wrep'>
         <div className='message'>
@@ -66,13 +70,16 @@ export default class App extends Component {
           <form className="main_add" style={this.main_add} onSubmit={this.handlesubmit}>
             <div className="list_add_left">
               <div>지출 항목</div>
-              <input type="text" id="name" style={this.input} onChange={this.handleChange} />
+              <input className="input1" type="text" id="name" style={this.input} onChange={this.handleChange} />
+              <div className="btn">
+              <input type="submit" value="제출" className="btn" />
+              </div>
             </div>
             <div className="list_add_right">
               <div>지출 비용</div>
-              <input type="number" id="value" style={this.input} onChange={this.handleChange} />
+              <input className="input1" type="number" id="value" style={this.input} onChange={this.handleChange} />
             </div>
-            <input type="submit" value="" className="btn" />
+            
           </form>
 
           <div className="main_list">
