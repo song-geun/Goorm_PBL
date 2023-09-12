@@ -3,18 +3,9 @@ import "./App.css";
 export default class App extends Component {
   state = {
     todoData: [
-      {
-        id: "1",
-        title: "공부하기",
-        completed: true
-      },
-      {
-        id: "2",
-        title: "예압",
-        completed: false
-      }
+      
     ],
-    value : ""
+    value: ""
   }
   btnstyle = {
     color: "#fff",
@@ -25,12 +16,13 @@ export default class App extends Component {
     float: "right"
   }
 
-  getStyle = () => {
+
+  listStyle = (completed) => {
     return {
-      padding: "10px",
-      borderBottom: "1px #ccc dotted",
-      TextDecoderation: 'none'
-    }
+        padding: "10px",
+        borderBottom: "1px #ccc dotted",
+        textDecoration: completed ? "line-through" : "none",
+    };
   }
 
 
@@ -39,21 +31,31 @@ export default class App extends Component {
     this.setState({ todoData: newTodoData });
   }
 
-  handleChange = (e) =>{
-    this.setState({value : e.target.value});
+  handleChange = (e) => {
+    this.setState({ value: e.target.value });
   }
-  handlesubmit = (e) =>{
+  handlesubmit = (e) => {
 
     e.preventDefault(); //리프레시 방지
 
     let newTodo = {
-      id : Date.now(),
+      id: Date.now(),
       title: this.state.value,
-      completed : false
+      completed: false
     }
 
-    this.setState({todoData : [...this.state.todoData, newTodo]});
-  } 
+    this.setState({ todoData: [...this.state.todoData, newTodo], value:"" });
+  }
+
+  handleCompleChange = (id) =>{
+    let newTodoData = this.state.todoData.map((data) => {
+      if(data.id === id){
+        data.completed = !data.completed;
+      }
+      return data;
+    });
+    this.setState({todoData : newTodoData});
+  }
   render() {
     return (
       <div className="container">
@@ -62,8 +64,10 @@ export default class App extends Component {
             할 일 목록
           </div>
           {this.state.todoData.map((data) => (
-            <div style={this.getStyle()} key={data.id}>
-              <input type="checkbox" defaultChecked={data.completed} />
+            <div style={this.listStyle(data.completed)} key={data.id}>
+              <input type="checkbox" 
+              onChange={()=> this.handleCompleChange(data.id)}
+              defaultChecked={false} />{" "}
               {data.title}
               <button style={this.btnstyle} onClick={() => this.handleClick(data.id)}>x</button>
             </div>
@@ -71,8 +75,8 @@ export default class App extends Component {
 
           <form style={{ display: 'flex' }} onSubmit={this.handlesubmit}>
             <input type="teext" name="value" style={{ flex: '10', padding: '5px' }}
-              placeholder="해야 할 일을 입력하세요." value={this.state.value} onChange={this.handleChange}/>
-            <input type="submit" value="입력" className="btn" style={{flex : '1'}}/>
+              placeholder="해야 할 일을 입력하세요." value={this.state.value} onChange={this.handleChange} />
+            <input type="submit" value="입력" className="btn" style={{ flex: '1' }} />
           </form>
         </div>
       </div>
