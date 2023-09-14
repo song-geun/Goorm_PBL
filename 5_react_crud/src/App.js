@@ -72,7 +72,7 @@ export default class App extends Component {
               <div>지출 항목</div>
               <input className="input1" type="text" id="name" style={this.input} onChange={this.handleChange} />
               <div className="btn">
-              <input type="submit" value="제출" className="btn" />
+              <input type="submit" value="제출" className="btn"/>
               </div>
             </div>
             <div className="list_add_right">
