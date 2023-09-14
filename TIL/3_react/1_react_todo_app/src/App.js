@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./App.css";
-import Lists from "./lists";
+import Lists from "./components/lists";
+import Form from "./components/Form";
 export default function App(){
   let state = {
     todoData: [
@@ -14,25 +15,20 @@ export default function App(){
 
 
 
-  const handleChange = (e) => {
-    // this.setState({ value: e.target.value });
-    setValue(e.target.value);
-  }
   const handlesubmit = (e) => {
 
     e.preventDefault(); //리프레시 방지
 
     let newTodo = {
-      id: Date.now(),
-      title: value,
-      completed: false
+        id: Date.now(),
+        title: value,
+        completed: false
     }
 
     //this.setState({ todoData: [...todoData, newTodo], value:"" });
-    setTodoData(prev=> [...prev, newTodo]);
+    setTodoData(prev => [...prev, newTodo]);
     setValue("");
-  }
-
+}
   
 
     return (
@@ -45,13 +41,9 @@ export default function App(){
           <Lists todoData={todoData} setTodoData={setTodoData} />
 
 
+          <Form handlesubmit={handlesubmit} value={value} setValue={setValue}/>
 
-
-          <form style={{ display: 'flex' }} onSubmit={handlesubmit}>
-            <input type="text" name="value" style={{ flex: '10', padding: '5px' }}
-              placeholder="해야 할 일을 입력하세요." value={value} onChange={handleChange} />
-            <input type="submit" value="입력" className="btn" style={{ flex: '1' }} />
-          </form>
+          
         </div>
       </div>
     )
