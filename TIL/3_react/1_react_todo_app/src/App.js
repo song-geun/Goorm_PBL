@@ -3,7 +3,7 @@ import "./App.css";
 import Lists from "./components/lists";
 import Form from "./components/Form";
 export default function App() {
-  let state = {
+  const state = {
     todoData: [
 
     ],
@@ -34,7 +34,7 @@ export default function App() {
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-blue-100">
       <div className="w-ful p-6 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg">
-        <div className="flex justify-between mb-3">
+        <div className="flex justify-between">
           할 일 목록
         </div>
         <Lists todoData={todoData} setTodoData={setTodoData} />
