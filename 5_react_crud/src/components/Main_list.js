@@ -1,21 +1,26 @@
 import React from "react";
 
-export default function Main_list({listdata}) {
+export default function Main_list({ listdata, handleedit }) {
     return (
 
         <div >
             {
                 listdata.map((data) =>
                 (
-                    <div className="lists" key={data.id}>
-                        <div >
-                            {data.title}
-                        </div>
-                        <div >
-                            {data.value}
-                        </div>
-                        <div >
-
+                    <div className="" key={data.id}>
+                        <div>
+                            <div>
+                                <div >
+                                    {data.title}
+                                </div>
+                                <div >
+                                    {data.val}
+                                </div>
+                            </div>
+                            <div >
+                                <button>edit</button>
+                                <button>x</button>
+                            </div>
                         </div>
                     </div>
                 )

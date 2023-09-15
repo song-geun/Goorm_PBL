@@ -12,7 +12,6 @@ export default function App(){
     selectable: false
   };
 
-  let total = 0;
 
   const [listdata, setListData] = useState([]);
   const [value, setValue] = useState("");
@@ -27,11 +26,10 @@ export default function App(){
     let newlist = {
       id: Date.now(),
       title: name,
-      value: value
+      val: value
     }
     //value.value = "";
     //name.value = "";
-    total += Number(value.value);
     //this.setState({ listdata: [...this.state.listdata, newlist] });
 
     setListData(prev => [...prev, newlist]);
@@ -44,6 +42,13 @@ export default function App(){
 
   }
 
+  const totalvalue = ()=>{
+    let totalvalue = 0;
+    listdata.forEach((data)=>{
+      totalvalue+=Number(data.val);
+    })
+    return totalvalue;
+  }
 
 
 
@@ -59,10 +64,10 @@ export default function App(){
         </div>
         <Form handlesubmit={handlesubmit} setName = {setName} setValue = {setValue}/>
 
-        <Main_list listdata={listdata}/>
+        <Main_list listdata={listdata} handleedit={handleedit}/>
       </div>
       <div>
-        총지출 : {total}
+        총지출 : {totalvalue()}
       </div>
     </div>
   )
