@@ -16,4 +16,7 @@ export default function Form({handlesubmit,value, setValue}) {
             <input className="p2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-400" type="submit" value="입력" />
         </form>
     )
-}
+}lkjklk
+
+
+
