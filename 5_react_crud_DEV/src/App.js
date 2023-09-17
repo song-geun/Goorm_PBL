@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Main_list from "./components/Main_list";
@@ -18,8 +18,30 @@ export default function App() {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
 
+  const handleClick = useCallback((id) => {
 
+    let listdata1 = listdata.filter((data) => data.id !== id);
+    setListData(listdata1);
+    localStorage.setItem("listdata", JSON.stringify(listdata1));
+  }, [listdata])
+  const handleedit = useCallback((e, id) => {
+    e.preventDefault();
 
+    let listdata1 = listdata.filter((data) => data.id !== id);
+    const name = "name" + id;
+    const e1 = document.getElementById(name);
+    const value = "value" + id;
+    const e2 = document.getElementById(value);
+    let newlist = {
+      id: id,
+      title: e1.value,
+      val: e2.value
+    }
+    listdata1.push(newlist);
+    e1.value = "";
+    e2.value = "";
+    setListData(listdata1);
+  }, [listdata])
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -39,24 +61,7 @@ export default function App() {
     setName("");
   }
 
-  const handleedit = (e,id) => {
-    e.preventDefault();
-
-    let listdata1 = listdata.filter((data) => data.id !== id);
-    const name = "name" + id;
-    const e1 = document.getElementById(name);
-    const value = "value" + id;
-    const e2 = document.getElementById(value);
-    let newlist ={
-      id : id,
-      title : e1.value,
-      val : e2.value
-    }
-    listdata1.push(newlist);
-    e1.value = "";
-    e2.value = "";
-    setListData(listdata1);
-  }
+  
 
   const totalvalue = () => {
     let totalvalue = 0;
@@ -79,9 +84,19 @@ export default function App() {
           <div >
             예산 계산기
           </div>
-          <Form handlesubmit={handlesubmit} setName={setName} setValue={setValue} />
-
-          <Main_list listdata={listdata} handleedit={handleedit} setListData={setListData} />
+          <div>
+            <Form handlesubmit={handlesubmit} setName={setName} setValue={setValue} />
+          </div>
+          <div>
+            {
+              listdata.map((data) =>
+              (
+                <div className="flex items-center" key={data.id}>
+                <Main_list id={data.id} title={data.title} val = {data.val} handleClick={handleClick} handleedit={handleedit} />
+                </div>
+              ))
+            }
+          </div>
         </div>
         <div className="float-right">
           총지출 : {totalvalue()}
