@@ -3,6 +3,10 @@ import "./App.css";
 import Form from "./components/Form";
 import Main_list from "./components/Main_list";
 
+
+const initaillistdata = localStorage.getItem("listdata")
+  ? JSON.parse(localStorage.getItem("listdata"))  : [];
+
 export default function App() {
   const state = {
     listdata: [
@@ -14,7 +18,7 @@ export default function App() {
   };
 
 
-  const [listdata, setListData] = useState([]);
+  const [listdata, setListData] = useState(initaillistdata);
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
 
@@ -41,6 +45,7 @@ export default function App() {
     name1.value = "";
 
     setListData(prev => [...prev, newlist]);
+    localStorage.setItem("listdata", JSON.stringify([...listdata, newlist]));
     setValue("");
     setName("");
   }
@@ -56,6 +61,7 @@ export default function App() {
         return data;
     })
     setListData(newlist);
+    localStorage.setItem("listdata", JSON.stringify(newlist));
     setIsEditing(false);
 },[listdata])
 
