@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Main_list from "./components/Main_list";
+
 export default function App() {
   const state = {
     listdata: [
@@ -82,7 +83,7 @@ export default function App() {
 
           <Main_list listdata={listdata} handleedit={handleedit} setListData={setListData} />
         </div>
-        <div>
+        <div className="float-right">
           총지출 : {totalvalue()}
         </div>
       </div>

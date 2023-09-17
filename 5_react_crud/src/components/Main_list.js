@@ -1,5 +1,6 @@
 import React from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPenToSquare, faX} from '@fortawesome/free-solid-svg-icons'
 export default function Main_list({ listdata, handleedit, setListData }) {
 
     const handleClick = (id) => {
@@ -17,7 +18,7 @@ export default function Main_list({ listdata, handleedit, setListData }) {
                 listdata.map((data) =>
                 (
                     <div className="flex items-center" key={data.id}>
-                        <div className="flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 bg-gray-100 border rounded shadow">
+                        <div className="flex items-center justify-between w-full px-4 py-2 my-2 text-gray-600 bg-blue-300 border rounded shadow">
 
                             <input
                                 className="w-full px-2 py-2 mr-4 text-gray-500 border rounded shadow "
@@ -29,9 +30,9 @@ export default function Main_list({ listdata, handleedit, setListData }) {
                                 id={value + data.id}
                                 placeholder={data.val}
                             />
-                            <div className="w-full float-right">
-                                <i class="fa-solid fa-pen-to-square" onClick={(e) => handleedit(e,data.id)}></i>
-                                <button onClick={() => handleClick(data.id)}>x</button>
+                            <div className="w-20 mr-4 float-right">
+                                <FontAwesomeIcon icon={faPenToSquare} onClick={(e) => handleedit(e,data.id)} />
+                                <FontAwesomeIcon icon={faX} onClick={() => handleClick(data.id)} />
                             </div>
                         </div>
                     </div>
