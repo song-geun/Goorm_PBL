@@ -24,24 +24,8 @@ export default function App() {
     setListData(listdata1);
     localStorage.setItem("listdata", JSON.stringify(listdata1));
   }, [listdata])
-  const handleedit = useCallback((e, id) => {
-    e.preventDefault();
 
-    let listdata1 = listdata.filter((data) => data.id !== id);
-    const name = "name" + id;
-    const e1 = document.getElementById(name);
-    const value = "value" + id;
-    const e2 = document.getElementById(value);
-    let newlist = {
-      id: id,
-      title: e1.value,
-      val: e2.value
-    }
-    listdata1.push(newlist);
-    e1.value = "";
-    e2.value = "";
-    setListData(listdata1);
-  }, [listdata])
+
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -60,8 +44,20 @@ export default function App() {
     setValue("");
     setName("");
   }
-
   
+  const handleEditSubmit = useCallback((e,id,editedTitle, editedvalue, setIsEditing) => {
+
+    e.preventDefault();
+    let newlist = listdata.map(data => {
+        if (data.id === id) {
+            data.title = editedTitle;
+            data.val = editedvalue;
+        }
+        return data;
+    })
+    setListData(newlist);
+    setIsEditing(false);
+},[listdata])
 
   const totalvalue = () => {
     let totalvalue = 0;
@@ -92,7 +88,7 @@ export default function App() {
               listdata.map((data) =>
               (
                 <div className="flex items-center" key={data.id}>
-                <Main_list id={data.id} title={data.title} val = {data.val} handleClick={handleClick} handleedit={handleedit} />
+                <Main_list handleEditSubmit={handleEditSubmit} id={data.id} title={data.title} val = {data.val} handleClick={handleClick} />
                 </div>
               ))
             }
