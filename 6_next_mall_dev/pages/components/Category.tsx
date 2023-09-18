@@ -1,15 +1,6 @@
-import { GetServerSideProps, NextPage } from "next";
-import instance from "../api/axios";
-import requests from "../api/listrequests";
 
 
-export async function getServerSideProps(){
-    const request = await instance.get(requests.fetchProduct);
-    const data = await request.json();
-    return {
-        props: {data}
-    }
-}
+
 
 export default function Category({data}: any)
 {
