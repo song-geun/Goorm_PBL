@@ -1,7 +1,9 @@
 import axios from "axios"
 
-const instance: Function = axios.create({
-    baseURL : "https://fakestoreapi.com/products"
+const instance: any = axios.create({
+    baseURL : "https://fakestoreapi.com/"
 });
+
+
 
 export default instance;
