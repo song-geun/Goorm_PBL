@@ -4,7 +4,6 @@
 
 export default function Category({data}: any)
 {
-    console.log(data);
     return (
         <div>
             {

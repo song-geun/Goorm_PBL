@@ -1,4 +1,4 @@
-const menus: any = ((e: object) => {
+const menu: any = ((e: object) => {
     return (
         <div>
             <div >
@@ -27,4 +27,4 @@ const menus: any = ((e: object) => {
 }
 );
 
-export default menus;
+export default menu;
