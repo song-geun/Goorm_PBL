@@ -12,7 +12,7 @@ const Categories: any = (({e, fetchUrl} : {e: any, fetchUrl : any}) => {
     useEffect(() => {
         fetchData();
     }, [fetchUrl]);
-
+    let cnt:number = 0;
     const fetchData = async () => {
         const request: any = await instance.get(requests.fetchProduct);
         const result: any = [];
@@ -24,11 +24,11 @@ const Categories: any = (({e, fetchUrl} : {e: any, fetchUrl : any}) => {
     }
 
     return (
-        <div>
+        <div className="flex-row w-screen">
             {
                 Products.map((data: any) => {
                     return (
-                        <div key={data.id} className="flex-col w-screen">
+                        <div className="flex">
                             <Category data={data}/>
                         </div>
                     )
