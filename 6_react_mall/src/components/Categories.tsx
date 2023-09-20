@@ -6,15 +6,18 @@ import Category from "./Category";
 
 
 
-const Categories: any = (({e, fetchUrl} : {e: any, fetchUrl : any}) => {
-    let cate: any[] = [{ id: 1, title: 2, image: 3, price: 4 }];
+const Categories: any = (({ e, fetchUrl }: { e: any, fetchUrl: any }) => {
     const [Products, SetCategory] = useState([]);
     useEffect(() => {
         fetchData();
     }, [fetchUrl]);
-    let cnt:number = 0;
+    let cnt: number = 0;
     const fetchData = async () => {
-        const request: any = await instance.get(requests.fetchProduct);
+        let request: any;
+        if (fetchUrl === "")
+            request = await instance.get(requests.fetchProduct);
+        else
+            request = await instance.get(fetchUrl);
         const result: any = [];
         console.log(request);
         request.data.forEach((element: any) => {
@@ -24,17 +27,19 @@ const Categories: any = (({e, fetchUrl} : {e: any, fetchUrl : any}) => {
     }
 
     return (
-        <div className="flex-row w-screen">
-            {
-                Products.map((data: any) => {
-                    return (
-                        <div className="flex">
-                            <Category data={data}/>
-                        </div>
-                    )
-                })
-            }
+
+        <div className="flex justify-center">
+            <div className="w-4/5 py-4 px-4 mx-10 grid grid-cols-5  place-content-center gap-4">
+                {
+                    Products.map((data: any) => {
+                        return (
+                            <Category data={data} />
+                        )
+                    })
+                }
+            </div>
         </div>
+
     );
 }
 );
