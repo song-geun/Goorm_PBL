@@ -19,7 +19,6 @@ const Categories: any = (({ e, fetchUrl }: { e: any, fetchUrl: any }) => {
         else
             request = await instance.get(fetchUrl);
         const result: any = [];
-        console.log(request);
         request.data.forEach((element: any) => {
             result.push(element);
         });
@@ -29,7 +28,7 @@ const Categories: any = (({ e, fetchUrl }: { e: any, fetchUrl: any }) => {
     return (
 
         <div className="flex justify-center">
-            <div className="w-4/5 py-4 px-4 mx-10 grid grid-cols-5  place-content-center gap-4">
+            <div className="w-4/5 py-4 px-4 mx-10 grid grid-cols-5  place-content-center gap-5">
                 {
                     Products.map((data: any) => {
                         return (
