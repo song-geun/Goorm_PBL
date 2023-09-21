@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import instance from "../api/axios";
 import requests from "../api/listrequests";
 import Category from "./Category";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../api/store";
 
 
 
 
-const Categories: any = (({ e, fetchUrl }: { e: any, fetchUrl: any }) => {
+const Categories: any = (( e : any) => {
+    const fetchUrl = useSelector((state: RootState) => state.fetch.fetchUrl);
     const [Products, SetCategory] = useState([]);
     useEffect(() => {
         fetchData();
