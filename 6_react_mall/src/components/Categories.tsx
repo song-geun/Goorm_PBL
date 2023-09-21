@@ -4,13 +4,14 @@ import requests from "../api/listrequests";
 import Category from "./Category";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../api/store";
-
-
-
+import { setItems } from "../api/fetchUrl";
 
 const Categories: any = (( e : any) => {
     const fetchUrl = useSelector((state: RootState) => state.fetch.fetchUrl);
-    const [Products, SetCategory] = useState([]);
+    const Products = useSelector((state: RootState) => state.fetch.items);
+    const dispatch = useDispatch();
+    
+//    const [Products, SetCategory] = useState([]);
     useEffect(() => {
         fetchData();
     }, [fetchUrl]);
@@ -25,9 +26,9 @@ const Categories: any = (( e : any) => {
         request.data.forEach((element: any) => {
             result.push(element);
         });
-        SetCategory(result);
+        dispatch(setItems(result));
     }
-
+    
     return (
 
         <div className="flex justify-center">

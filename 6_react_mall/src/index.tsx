@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './api/store';
 import { Provider } from 'react-redux'
+import {BrowserRouter} from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>    
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 
