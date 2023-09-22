@@ -9,10 +9,10 @@ const requests: {
     = {
     fetchProduct: '/products',
     fetchProductSELECT: '/products/',
-    fetchjewelerycategry: '/products/category/jewelery',
-    fetchelectronicscategory : '/products/category/electronics',
-    fetchmencategory : '/products/category/men\'s clothing',
-    fetchwomencategery : '/products/category/women\'s clothing'
+    fetchjewelerycategry: 'jewelery',
+    fetchelectronicscategory : 'electronics',
+    fetchmencategory : 'men\'s clothing',
+    fetchwomencategery : 'women\'s clothing'
 }
 
 export default requests;
