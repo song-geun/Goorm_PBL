@@ -1,20 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import requests from "./listrequests";
+import axios from "axios";
+import instance from "./axios";
 
 export interface arrayState {
     fetchUrl: string,
     cart : [],
     items : [],
-    item : string
+    item : string,
+    error : string,
+    isLoading : boolean,
 }
 
 const initialState: arrayState = {
     fetchUrl: requests.fetchProduct,
     cart : [],
     items : [],
-    item : ""
+    item : "",
+    error : "",
+    isLoading : false
 }
+
+
+
+
+
 
 export const fetchUrl = createSlice({
     name: 'Product',
@@ -33,7 +44,36 @@ export const fetchUrl = createSlice({
             state.items = action.payload
         },
     },
+    extraReducers : (builder) => {
+        builder
+            .addCase(fetchProducts.pending, (state) =>{
+                state.isLoading = true;
+            })
+            .addCase(fetchProducts.fulfilled, (state, action) =>{
+                state.isLoading = false;
+                state.items = action.payload;
+            })
+            .addCase(fetchProducts.rejected, (state, action : any) =>
+            {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+    },
 })
+
+export const fetchProducts = createAsyncThunk(
+    "products/fetchProducts", async (URL :any,thunkAPI) =>{
+        try {
+            const response = await instance.get(URL);
+            return response.data;
+        } 
+        catch(e)
+        {
+            
+            return thunkAPI.rejectWithValue("Error loading products");
+        }
+    } 
+)
 
 export const {setUrl, setCart, setItem, setItems} = fetchUrl.actions
 

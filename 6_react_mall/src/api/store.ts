@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import fetchUrl from "./fetchUrl";
+import user from "./user";
 
 export const store = configureStore({
     reducer : {
-        fetch : fetchUrl
+        fetch : fetchUrl,
+        //uses : user
     },
 });
 

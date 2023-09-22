@@ -3,32 +3,19 @@ import instance from "../api/axios";
 import requests from "../api/listrequests";
 import Category from "./Category";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../api/store";
-import { setItems } from "../api/fetchUrl";
+import { AppDispatch, RootState } from "../api/store";
+import { fetchProducts, setItems } from "../api/fetchUrl";
 
 const Categories: any = (( e : any) => {
     const fetchUrl = useSelector((state: RootState) => state.fetch.fetchUrl);
     const Products = useSelector((state: RootState) => state.fetch.items);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     
-//    const [Products, SetCategory] = useState([]);
     useEffect(() => {
-        fetchData();
+        // fetchData();
+        dispatch(fetchProducts(fetchUrl));
     }, [fetchUrl]);
-    let cnt: number = 0;
-    const fetchData = async () => {
-        let request: any;
-        if (fetchUrl === "")
-            request = await instance.get(requests.fetchProduct);
-        else
-            request = await instance.get(fetchUrl);
-        const result: any = [];
-        request.data.forEach((element: any) => {
-            result.push(element);
-        });
-        dispatch(setItems(result));
-    }
-    
+
     return (
 
         <div className="flex justify-center">
