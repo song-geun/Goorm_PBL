@@ -3,8 +3,6 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface user_info{
     id : string,
-    email : string,
-    token : string,
     password : string,
     inputid : string,
     inputpassword : string
@@ -12,8 +10,6 @@ export interface user_info{
 
 const initialState: user_info = {
     id : "",
-    email : "",
-    token : "",
     password : "",
     inputid : "",
     inputpassword : ""
@@ -26,8 +22,8 @@ export const user = createSlice({
         setUser : (state, action: PayloadAction<user_info>) =>
         {
             state.id = action.payload.id;
-            state.email = action.payload.email;
-            state.token = action.payload.token;
+            state.inputid = action.payload.inputid;
+            state.inputpassword = action.payload.inputpassword;
             state.password = action.payload.password;
         },
         setinputid : (state, action : PayloadAction<string>) =>{
