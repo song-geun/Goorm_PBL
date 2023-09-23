@@ -1,4 +1,5 @@
 import React from 'react'
+import { login } from '../api/firebase_log';
 
 const Head = () => {
     return (
@@ -6,7 +7,7 @@ const Head = () => {
             Head
             <div className="flex">
                 <span>add</span>
-                <span>login</span>
+                <span onClick={login}>login</span>
             </div>
         </div>
     )

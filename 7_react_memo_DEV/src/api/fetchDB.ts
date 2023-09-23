@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, DataSnapshot } from "firebase/database";
 
 
 interface tag {
@@ -25,10 +26,18 @@ const initialState: memo = {
 }
 
 const fetchDBdata = () => {
+    const firebaseConfig = {
+        databaseURL: "https://learn-firebase-memo.firebaseio.com",
+    }
     const db: any = getDatabase();
     const auth: any = getAuth();
-    const userId: any = auth.current.uid;
-    return db.ref(userId).on("value");
+    console.log(auth);
+    const userId: any = auth.currentUser.uid;
+    const userIdRef = ref(db, userId);
+    return onValue(userIdRef, (DataSnapshot) =>{
+        const data = DataSnapshot.val();
+        return data;
+    });
 }
 
 const updateDBdata = (state: memo) => {
@@ -41,7 +50,7 @@ export const fetchDB = createSlice({
     initialState,
     reducers: {
         getMemo: (state) => {
-            const now: memo = fetchDBdata();
+            const now: any = fetchDBdata();
             state.memos = now.memos;
             state.tags = now.tags;
         },
@@ -72,6 +81,6 @@ export const fetchDB = createSlice({
 
 
 
-export const { } = fetchDB.actions
+export const { getMemo, addMemo, addtag, deleteMemo, deletetag } = fetchDB.actions
 
 export default fetchDB.reducer

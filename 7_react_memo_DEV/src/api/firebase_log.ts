@@ -1,27 +1,15 @@
-import { signOut, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signOut, getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth";
+import { app } from "./firebase";
+import { AppDispatch } from "./store";
+import { useDispatch } from "react-redux";
+import { setUser } from "./user";
 
 const provider = new GoogleAuthProvider();
-const auth = getAuth();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+const auth = getAuth(app);
+
 export const login = () => {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential: any = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-        });
+    signInWithRedirect(auth, provider);
 }
 export const logout = () => {
     signOut(auth).then(() => {
