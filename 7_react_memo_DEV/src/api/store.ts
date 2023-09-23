@@ -9,8 +9,8 @@ export const store = configureStore({
         fetch : fetchDB,
         user : user,
         input : input
-    }
-})
+    },
+});
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;

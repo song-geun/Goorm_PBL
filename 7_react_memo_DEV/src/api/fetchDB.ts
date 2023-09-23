@@ -8,7 +8,7 @@ interface tag {
     tagname: string,
 }
 interface memos {
-    id : string,
+    id: string,
     priority: boolean,
     tagname: string,
     memoname: string,
@@ -23,14 +23,15 @@ const initialState: memo = {
     tags: [],
     memos: []
 }
-const db : any = getDatabase();
-const auth : any = getAuth();
-const userId = auth.current.uid;
+
 const fetchDBdata = () => {
+    const db: any = getDatabase();
+    const auth: any = getAuth();
+    const userId: any = auth.current.uid;
     return db.ref(userId).on("value");
 }
 
-const updateDBdata = (state : memo) =>{
+const updateDBdata = (state: memo) => {
     return state;
 }
 
@@ -40,25 +41,25 @@ export const fetchDB = createSlice({
     initialState,
     reducers: {
         getMemo: (state) => {
-            const now : memo = fetchDBdata();
+            const now: memo = fetchDBdata();
             state.memos = now.memos;
             state.tags = now.tags;
         },
-        addMemo : (state, action: PayloadAction<memos>) =>{
+        addMemo: (state, action: PayloadAction<memos>) => {
             state.memos.push(action.payload);
             updateDBdata(state);
         },
-        deleteMemo : (state, action : PayloadAction<string>) =>{
+        deleteMemo: (state, action: PayloadAction<string>) => {
             const now = state.memos.filter((data) => data.id !== action.payload);
             state.memos = now;
             updateDBdata(state);
         }
         ,
-        addtag : (state, action : PayloadAction<tag>)=>{
+        addtag: (state, action: PayloadAction<tag>) => {
             state.tags.push(action.payload);
             updateDBdata(state);
         },
-        deletetag : (state, action: PayloadAction<string>)=>{
+        deletetag: (state, action: PayloadAction<string>) => {
             const now = state.tags.filter((data) => data.tagname !== action.payload)
             state.tags = now;
             updateDBdata(state);
