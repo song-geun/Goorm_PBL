@@ -5,7 +5,7 @@ import user from "./user";
 export const store = configureStore({
     reducer : {
         fetch : fetchUrl,
-        //uses : user
+        User : user,
     },
 });
 

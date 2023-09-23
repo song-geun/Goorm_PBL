@@ -10,7 +10,7 @@ const Nav: any = ((e: object) => {
                 <div className="flex justify-end">
                     <span onClick={()=> {navigate('../Carts')}}>장바</span>
                     <span>구니</span>
-                    <span>EX</span>
+                    <span onClick={()=> {navigate('../Login')}}>EX</span>
                 </div>
             </div>
         </div>
