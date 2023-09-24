@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface memos {
+    date : number,
     id: string,
     priority: boolean,
     tag: string,
     memotitle: string,
-    context: string
+    context: string,
+
 }
 
 const initialState: memos = {
@@ -15,6 +17,7 @@ const initialState: memos = {
     tag: "",
     memotitle: "",
     context: "",
+    date : 0,
 }
 
 export const input = createSlice({

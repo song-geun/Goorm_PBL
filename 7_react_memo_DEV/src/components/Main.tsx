@@ -10,9 +10,19 @@ const Main = () => {
     const Memos1: any = useSelector((state: RootState) => state.fetch.memos);
     const tags = useSelector((state: RootState) =>
         state.user.tags);
-    const Note = Memos1.filter((data: any) => data.tag === tags);
-    const priority_h = Note.filter((data: any) => data.priority === true);
-    const priority_l = Note.filter((data: any) => data.priority === false);
+    const issort: any = useSelector((state: RootState) => state.user.datesort);
+    const prioritysort: any = useSelector((state: RootState) => state.user.priority);
+    let Note: any;
+    if (tags === "default")
+        Note = Memos1;
+    else
+        Note = Memos1.filter((date: any) => date.tag === tags);
+    const priority_h: any = Note.filter((data: any) => data.priority === prioritysort);
+    const priority_l: any = Note.filter((data: any) => data.priority === !prioritysort);
+    if (issort) {
+        priority_h.sort();
+        priority_l.sort();
+    }
     return (
         <div className='items-center'>
             {

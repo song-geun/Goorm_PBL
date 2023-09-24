@@ -4,11 +4,15 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface email{
     email : string,
     tags : string,
+    priority : boolean,
+    datesort : boolean,
 }
 
 const initialState: email = {
     email : "",
-    tags : "default"
+    tags : "default",
+    priority : true,
+    datesort : false,
 }
 
 export const user = createSlice({
@@ -22,9 +26,15 @@ export const user = createSlice({
         settags : (state, action: PayloadAction<string>) =>{
             state.tags = action.payload;
         },
+        setpriority : (state, action : PayloadAction<boolean>) =>{
+            state.priority = action.payload;
+        },
+        setdatesort : (state, action : PayloadAction<boolean>) =>{
+            state.datesort = action.payload;
+        }
     }
 })
 
-export const {setUser, settags}  = user.actions
+export const {setUser, settags, setpriority, setdatesort}  = user.actions
 
 export default user.reducer

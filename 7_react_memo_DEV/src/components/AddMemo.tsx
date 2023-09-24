@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../api/store';
-import { setinputContents, setinputtitle } from '../api/input';
+import { setTag, setinputContents, setinputtitle } from '../api/input';
 import { memos } from '../api/input';
 import { randomUUID } from 'crypto';
 import { addMemo } from '../api/fetchDB';
 import { switching } from '../api/modal';
-import { tag } from '../api/inputtag';
+import {  tag } from '../api/inputtag';
 
 const AddMemo = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -30,12 +30,11 @@ const AddMemo = () => {
             priority: Piority,
             tag: tag,
             memotitle: title,
-            context: contents
+            context: contents,
+            date : Date.now(),
         };
         dispatch(addMemo([...Memos1,newmemo]));
     };
-
-
     return (
         <div className="flex flex-col">
             <input className="border-red-400" id='title' type="text" onChange={handleChange} />
@@ -44,7 +43,7 @@ const AddMemo = () => {
                 {
                     tags.map((data : tag) =>{
                         return(
-                        <button key={data.id}>{data.tag}</button>
+                        <button key={data.id} id = {data.tag} onClick={(e : any) => {dispatch(setTag(data.tag))}}>{data.tag}</button>
                         )
                     })
                 }
