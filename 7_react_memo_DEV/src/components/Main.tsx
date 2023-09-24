@@ -10,22 +10,21 @@ const Main = () => {
     const Memos1: any = useSelector((state: RootState) => state.fetch.memos);
     const tags = useSelector((state: RootState) =>
         state.user.tags);
-    let Note = Memos1.filter((data: any) => data.tag === tags);
-    let priority_h = Note.filter((data: any) => data.priority === true);
-    let priority_l = Note.filter((data: any) => data.priority === false);
-    useEffect(() => {
-        Note = Memos1.filter((data: any) => data.tag === tags);
-        priority_h = Note.filter((data: any) => data.priority === true);
-        priority_l = Note.filter((data: any) => data.priority === false);
-    }, [tags]);
+    const Note = Memos1.filter((data: any) => data.tag === tags);
+    const priority_h = Note.filter((data: any) => data.priority === true);
+    const priority_l = Note.filter((data: any) => data.priority === false);
     return (
-        <div>
+        <div className='items-center'>
             {
                 priority_h.map((data: any) => {
                     return (
                         <div key={data.id} >
-                            {data.title}
-                            {data.content}
+                            <div>
+                                {data.memotitle}
+                            </div>
+                            <div>
+                                {data.context}
+                            </div>
                         </div>
                     )
                 })
