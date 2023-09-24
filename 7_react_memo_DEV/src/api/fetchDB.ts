@@ -67,10 +67,13 @@ export const fetchDB = createSlice({
             })
             .addCase(fetchDBdata.fulfilled, (state, action: any) => {
                 state.isloading = false;
-                if (action.payload !== undefined)
+                if(action.payload !== null)
+                {
+                if (action.payload.memos !== undefined)
                     state.memos = action.payload.memos;
-                if (action.payload !== undefined)
+                if (action.payload.tags !== undefined)
                     state.tags = action.payload.tags;
+                }
             })
     }
 })

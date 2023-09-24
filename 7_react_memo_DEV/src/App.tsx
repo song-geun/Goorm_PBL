@@ -40,7 +40,7 @@ function App() {
         <Head />
       </div>
       <Routes>
-        <Route index element={<Main />} />
+        
         <Route />
       </Routes>
     </div>
