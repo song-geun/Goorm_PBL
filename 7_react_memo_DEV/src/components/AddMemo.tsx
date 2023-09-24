@@ -5,8 +5,10 @@ import { setinputContents, setinputtitle } from '../api/input';
 import { memos } from '../api/input';
 import { randomUUID } from 'crypto';
 import { addMemo } from '../api/fetchDB';
+import { switching } from '../api/modal';
+import { tag } from '../api/inputtag';
 
-function AddMemo(setModalOpen: any) {
+const AddMemo = () => {
     const dispatch = useDispatch<AppDispatch>();
     const title = useSelector((state: RootState) => state.input.memotitle);
     const contents = useSelector((state: RootState) => state.input.context);
@@ -40,14 +42,14 @@ function AddMemo(setModalOpen: any) {
             <input id="contents" type='text' onChange={handleChange} />
             <div className="border-red-400 border:2">
                 {
-                    tags.map((data : any) =>{
+                    tags.map((data : tag) =>{
                         return(
-                        <button key={crypto.randomUUID()}>{data}</button>
+                        <button key={data.id}>{data.tag}</button>
                         )
                     })
                 }
             </div>
-            <button onClick={handlesubmit}>저장</button>
+            <button onClick={(e : any)=>{handlesubmit(e); dispatch(switching(false))}}>저장</button>
         </div>
     )
 }

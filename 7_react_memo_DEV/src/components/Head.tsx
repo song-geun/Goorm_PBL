@@ -25,9 +25,7 @@ const Head = () => {
                     {
                         (email !== "") && <span onClick={() => dispatch(switching(!onoff))}>add</span>
                     }
-                    {
-                        onoff && <AddMemo setModalOpen={onoff} />
-                    }
+
 
 
                 </div>
@@ -35,6 +33,9 @@ const Head = () => {
             <div>
                 <Main />
             </div>
+            {
+                (onoff && <AddMemo />)
+            }
         </div>
 
     )

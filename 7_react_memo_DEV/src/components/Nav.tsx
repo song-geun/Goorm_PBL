@@ -8,34 +8,45 @@ import Tags from './Tags';
 import { randomUUID } from 'crypto';
 import { settags } from '../api/user';
 import { fetchDBdata } from '../api/fetchDB';
+import { Editswitch } from '../api/modal';
+import { tag } from '../api/inputtag';
 
 const Nav = () => {
-    const tags = useSelector((state : RootState) => state.fetch.tags);
-    const userinfo = useSelector((state : RootState) => state.user);
+    const tags = useSelector((state: RootState) => state.fetch.tags);
+    const userinfo = useSelector((state: RootState) => state.user);
+    const Editon = useSelector((state: RootState) => state.modal.Editonoff);
     const dispatch = useDispatch<AppDispatch>();
 
-    useEffect(()=>{
-        if(userinfo.email !== "")
+    useEffect(() => {
+        if (userinfo.email !== "")
             dispatch(fetchDBdata());
-    },[userinfo])
+    }, [userinfo]);
+
+
     return (
         <div>
-            일단 로그
+            Keep
             {
-                tags.map((data : any) => {
+                tags.map((data: tag) => {
                     return (
-                        <div key={crypto.randomUUID()} onClick={()=>{dispatch(settags(data))}}>
-                            {data}
+                        <div key={data.id} onClick={() => { dispatch(settags(data.tag)) }}>
+                            {data.tag}
                         </div>
                     )
                 })
             }
-            <Edit_Tag />
-            <Archive />
-            <Trash />
+            <div onClick={() => { dispatch(Editswitch(!Editon)) }}>
+                Edit_Tag
+            </div>
+
+            {
+                (Editon && <Edit_Tag />)
+            }
         </div>
+
     )
 }
-
+{/* <Archive />
+<Trash /> */}
 
 export default Nav;

@@ -3,18 +3,18 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, onValue, DataSnapshot, set, get, child } from "firebase/database";
-import { memos } from "./input";
+import { tag } from "./inputtag";
 
 
 
 export interface memo1 {
-    tags: string[],
-    memos: [],
+    tags: tag[],
+    memos: any[],
     isloading: boolean,
 }
 
 const initialState: memo1 = {
-    tags: ["default"],
+    tags: [{ tag: "default", id: 0 },],
     memos: [],
     isloading: false,
 }
@@ -67,12 +67,11 @@ export const fetchDB = createSlice({
             })
             .addCase(fetchDBdata.fulfilled, (state, action: any) => {
                 state.isloading = false;
-                if(action.payload !== null)
-                {
-                if (action.payload.memos !== undefined)
-                    state.memos = action.payload.memos;
-                if (action.payload.tags !== undefined)
-                    state.tags = action.payload.tags;
+                if (action.payload !== null && action.payload !== undefined) {
+                    if (action.payload.memos !== undefined)
+                        state.memos = action.payload.memos;
+                    if (action.payload.tags !== undefined)
+                        state.tags = action.payload.tags;
                 }
             })
     }
