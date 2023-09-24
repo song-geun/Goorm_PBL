@@ -18,19 +18,19 @@ import { setUser } from './api/user';
 function App() {
   const Dispatch = useDispatch();
   const auth = getAuth(app);
-getRedirectResult(auth)
-  .then((result : any) => {
-    const credential : any = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user.email;
-    
-    Dispatch(setUser(user));
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email : any = error.customData;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-  });
+  getRedirectResult(auth)
+    .then((result: any) => {
+      const credential: any = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user.email;
+
+      Dispatch(setUser(user));
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email: any = error.customData;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
 
 
   return (
@@ -40,7 +40,7 @@ getRedirectResult(auth)
         <Head />
       </div>
       <Routes>
-        <Route index element={<Main />}/>
+        <Route index element={<Main />} />
         <Route />
       </Routes>
     </div>

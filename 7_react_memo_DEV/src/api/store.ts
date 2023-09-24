@@ -3,12 +3,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import fetchDB from "./fetchDB";
 import user from "./user";
 import input from './input';
+import modal from './modal';
 
 export const store = configureStore({
     reducer : {
         fetch : fetchDB,
         user : user,
-        input : input
+        input : input,
+        modal : modal
     },
 });
 export type RootState = ReturnType<typeof store.getState>;

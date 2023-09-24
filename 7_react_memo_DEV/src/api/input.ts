@@ -1,29 +1,48 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface input_info{
-    inputid : string,
-    inputpassword : string
+export interface memos {
+    id: string,
+    priority: boolean,
+    tag: string,
+    memotitle: string,
+    context: string
 }
 
-const initialState: input_info = {
-    inputid : "",
-    inputpassword : ""
+const initialState: memos = {
+    id: "",
+    priority: false,
+    tag: "",
+    memotitle: "",
+    context: "",
 }
 
 export const input = createSlice({
     name : 'user',
     initialState,
     reducers :{
-        setinputid : (state, action : PayloadAction<string>) =>{
-            state.inputid = action.payload;
+        setUser : (state) =>{
+            state.id = "";
+            state.priority =  false;
+            state.tag = "default";
+            state.memotitle = "";
+            state.context = "";
         },
-        setinputPassword : (state, action : PayloadAction<string> ) =>{
-            state.inputpassword = action.payload;
+        setinputtitle : (state, action : PayloadAction<string>) =>{
+            state.memotitle = action.payload;
+        },
+        setinputContents : (state, action : PayloadAction<string> ) =>{
+            state.context = action.payload;
+        },
+        setTag : (state , action : PayloadAction<string>) =>{
+            state.tag = action.payload;
+        },
+        setPriority : (state, action : PayloadAction<boolean>) =>{
+            state.priority = action.payload;
         }
     }
 })
 
-export const {setinputid, setinputPassword}  = input.actions
+export const {setinputtitle, setinputContents, setTag, setUser, setPriority}  = input.actions
 
 export default input.reducer

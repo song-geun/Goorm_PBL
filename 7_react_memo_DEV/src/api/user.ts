@@ -3,10 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface email{
     email : string,
+    tags : string,
 }
 
 const initialState: email = {
     email : "",
+    tags : "default"
 }
 
 export const user = createSlice({
@@ -17,9 +19,12 @@ export const user = createSlice({
         {
             state.email = action.payload;
         },
+        settags : (state, action: PayloadAction<string>) =>{
+            state.tags = action.payload;
+        },
     }
 })
 
-export const {setUser}  = user.actions
+export const {setUser, settags}  = user.actions
 
 export default user.reducer

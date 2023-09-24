@@ -2,46 +2,37 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, onValue, DataSnapshot } from "firebase/database";
+import { getDatabase, ref, onValue, DataSnapshot, set, get, child } from "firebase/database";
+import { memos } from "./input";
 
 
-interface tag {
-    tagname: string,
-}
-interface memos {
-    id: string,
-    priority: boolean,
-    tagname: string,
-    memoname: string,
-    context: string
-}
-export interface memo {
-    tags: tag[],
-    memos: memos[],
+
+export interface memo1 {
+    tags: string[],
+    memos: [],
+    isloading: boolean,
 }
 
-const initialState: memo = {
-    tags: [],
-    memos: []
+const initialState: memo1 = {
+    tags: ["default"],
+    memos: [],
+    isloading: false,
 }
 
-const fetchDBdata = () => {
-    const firebaseConfig = {
-        databaseURL: "https://learn-firebase-memo.firebaseio.com",
-    }
+
+
+const updateDBdata = (state: memo1) => {
     const db: any = getDatabase();
     const auth: any = getAuth();
-    console.log(auth);
     const userId: any = auth.currentUser.uid;
-    const userIdRef = ref(db, userId);
-    return onValue(userIdRef, (DataSnapshot) =>{
-        const data = DataSnapshot.val();
-        return data;
-    });
-}
+    set(ref(db, 'users/' + userId), {
+        tags: state.tags,
+        memos: state.memos
+    }).then(() => {
 
-const updateDBdata = (state: memo) => {
-    return state;
+    })
+        .catch((error: any) => {
+        });
 }
 
 
@@ -49,38 +40,60 @@ export const fetchDB = createSlice({
     name: 'Product',
     initialState,
     reducers: {
-        getMemo: (state) => {
-            const now: any = fetchDBdata();
-            state.memos = now.memos;
-            state.tags = now.tags;
-        },
-        addMemo: (state, action: PayloadAction<memos>) => {
-            state.memos.push(action.payload);
+        addMemo: (state, action: PayloadAction<any>) => {
+            state.memos = action.payload;
             updateDBdata(state);
         },
         deleteMemo: (state, action: PayloadAction<string>) => {
-            const now = state.memos.filter((data) => data.id !== action.payload);
+            const now: any = state.memos.filter((data: any) => data.id !== action.payload);
             state.memos = now;
             updateDBdata(state);
         }
         ,
-        addtag: (state, action: PayloadAction<tag>) => {
-            state.tags.push(action.payload);
+        addtag: (state, action: PayloadAction<any>) => {
+            state.tags = action.payload;
             updateDBdata(state);
         },
         deletetag: (state, action: PayloadAction<string>) => {
-            const now = state.tags.filter((data) => data.tagname !== action.payload)
+            const now: any = state.tags.filter((data: any) => data !== action.payload)
             state.tags = now;
             updateDBdata(state);
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchDBdata.pending, (state) => {
+                state.isloading = true;
+            })
+            .addCase(fetchDBdata.fulfilled, (state, action: any) => {
+                state.isloading = false;
+                if (action.payload !== undefined)
+                    state.memos = action.payload.memos;
+                if (action.payload !== undefined)
+                    state.tags = action.payload.tags;
+            })
     }
 })
 
 
+export const fetchDBdata = createAsyncThunk(
+    "/fetchData", async (thunkAPI: void) => {
+        try {
+            const db: any = getDatabase();
+            const auth: any = getAuth();
+            const userId: any = auth.currentUser.uid;
+            const userIdRef = ref(db);
+            const result = await get(child(userIdRef, `users/${userId}`));
+            return result.val();
+        }
+        catch (e) {
+            return "Error loading data";
+        }
+    }
+)
 
 
 
-
-export const { getMemo, addMemo, addtag, deleteMemo, deletetag } = fetchDB.actions
+export const { addMemo, addtag, deleteMemo, deletetag } = fetchDB.actions
 
 export default fetchDB.reducer
