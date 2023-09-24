@@ -27,18 +27,21 @@ const Nav = () => {
         <div>
             Keep
             {
-                tags.map((data: tag) => {
+                (userinfo.email !== "" && tags.map((data: tag) => {
                     return (
                         <div key={data.id} onClick={() => { dispatch(settags(data.tag)) }}>
                             {data.tag}
                         </div>
                     )
-                })
+                }))
             }
-            <div onClick={() => { dispatch(Editswitch(!Editon)) }}>
-                Edit_Tag
-            </div>
 
+            {
+                (userinfo.email !== "" &&
+                    <div onClick={() => { dispatch(Editswitch(!Editon)) }}>
+                        Edit_Tag
+                    </div>)
+            }
             {
                 (Editon && <Edit_Tag />)
             }
