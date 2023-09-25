@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, onValue, DataSnapshot, set, get, child } from "firebase/database";
+import { getDatabase, ref,  set, get, child } from "firebase/database";
 import { tag } from "./inputtag";
 
 
