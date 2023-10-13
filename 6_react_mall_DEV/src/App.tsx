@@ -11,7 +11,7 @@ function App() {
     <div className='App'>
       <Nav />
       <Routes >
-        <Route path="/6_react_mall">
+        <Route path="/Goorm_PBL/6_react_mall">
           <Route index element={<Menu />} />
           <Route path="Carts" element={<Carts />} />
           <Route path="Items" element={<Items />} />
