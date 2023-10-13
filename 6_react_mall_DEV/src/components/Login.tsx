@@ -62,7 +62,7 @@ const Sign = (e: any) => {
         } 
         finally{ 
             dispatch(setUser(user));
-            navigate("/");
+            navigate("/Goorm_PBL/6_react_mall");
         }
         
     }
