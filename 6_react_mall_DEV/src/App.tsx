@@ -11,11 +11,11 @@ function App() {
     <div className='App'>
       <Nav />
       <Routes >
-        <Route path="/Goorm_PBL/6_react_mal/">
+        <Route path="/Goorm_PBL/6_react_mall">
           <Route index element={<Menu />} />
-          <Route path="Goorm_PBL/6_react_mall/Carts/" element={<Carts />} />
-          <Route path="Goorm_PBL/6_react_mall/Items/" element={<Items />} />
-          <Route path='Goorm_PBL/6_react_mall/Login/' element={<Login />} />
+          <Route path="/Goorm_PBL/6_react_mall/Carts" element={<Carts />} />
+          <Route path="/Goorm_PBL/6_react_mall/Items" element={<Items />} />
+          <Route path='/Goorm_PBL/6_react_mall/Login' element={<Login />} />
         </Route>
       </Routes>
     </div>
