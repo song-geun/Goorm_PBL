@@ -18,7 +18,7 @@ const Category: any = ((data: any) => {
     })
     return (
         <div className="flex flex-col px-5 w-20% h-72 justify-center border border-gray-500" key={data.data.id} >
-            <div className="flex flex-col justify-center m-5" onClick={() => {navigate('../Items'); dispatch(setItem(data.data.id))}}>
+            <div className="flex flex-col justify-center m-5" onClick={() => {navigate('/Goorm_PBL/6_react_mall/Items'); dispatch(setItem(data.data.id))}}>
                 <img className="flex w-48 h-48 object-fill" src={data.data.image} />
                 <p className="flex truncate">{data.data.title}</p>
             </div>
