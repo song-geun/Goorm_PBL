@@ -3,7 +3,6 @@ import { RootState } from "../api/store";
 
 const CartsItem : any = ((e : any) =>{
     const Products = useSelector((state: RootState) => state.fetch.items);
-    console.log(Products);
     const now : any = Products.filter((data:any)=> data.id === e.e);
     const item = now[0];
     return (

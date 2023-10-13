@@ -11,10 +11,10 @@ const Category: any = ((data: any) => {
     const cart = useSelector((state: RootState) => state.fetch.cart);
     const dispatch = useDispatch();
     let navigate = useNavigate();   
-
+    let product : boolean = cart.filter((now : any)=> now === data).length == 0 ? false : true;
     const AddCart = ((id : any)=>
     {
-        dispatch(setCart([...cart,id]));
+        dispatch(setCart([...cart.filter((id1 : any) => id1 !== id),id]));
     })
     return (
         <div className="flex flex-col px-5 w-20% h-72 justify-center border border-gray-500" key={data.data.id} >
@@ -23,7 +23,8 @@ const Category: any = ((data: any) => {
                 <p className="flex truncate">{data.data.title}</p>
             </div>
             <div className="flex flex-row justify-between">
-                <button onClick={() => {AddCart(data.data.id)}}>장바구니 담기</button> 
+                <button disabled = {product} onClick={() => {AddCart(data.data.id)}}>{product ? "장바구니에 담긴 제품" : "장바구니 담기"
+                }</button> 
                 <p className="turncate">$  {data.data.price}</p>
             </div>
         </div>
