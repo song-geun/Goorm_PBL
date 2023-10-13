@@ -14,11 +14,11 @@ const Carts: any = ((e: any) => {
 
     return (
         <div>
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     cart.map((data: number) => {
                         return (
-                            <div>
+                            <div className="bg-white p-4 rounded-lg shadow-md">
                                 <CartsItem e={data} />
                                 <button onClick={()=>del(data)}>삭제</button>
                             </div>

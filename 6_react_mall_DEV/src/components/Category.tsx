@@ -23,7 +23,7 @@ const Category: any = ((data: any) => {
                 <p className="flex truncate">{data.data.title}</p>
             </div>
             <div className="flex flex-row justify-between">
-                <button disabled = {product} onClick={() => {AddCart(data.data.id)}}>{product ? "장바구니에 담긴 제품" : "장바구니 담기"
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold  px-2 rounded-full" disabled = {product} onClick={() => {AddCart(data.data.id)}}>{product ? "장바구니에 담긴 제품" : "장바구니 담기"
                 }</button> 
                 <p className="turncate">$  {data.data.price}</p>
             </div>

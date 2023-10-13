@@ -7,9 +7,9 @@ const CartsItem : any = ((e : any) =>{
     const item = now[0];
     return (
         <div>
-            <img src={item.image}/>
-            {item.title}
-            {item.price}
+            <img className="w-32 h-32 mx-auto mb-4" src={item.image}/>
+            <h2 className="text-lg font-semibold truncate">{item.title}</h2>
+            <span className="text-blue-500 font-semibold">{item.price}</span>
         </div>
     )
 })
