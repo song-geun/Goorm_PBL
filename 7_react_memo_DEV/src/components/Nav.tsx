@@ -38,7 +38,7 @@ const Nav = () => {
 
             {
                 (userinfo.email !== "" &&
-                    <div onClick={() => { dispatch(Editswitch(!Editon)) }}>
+                    <div onClick={() => { dispatch(Editswitch(true)) }}>
                         Edit_Tag
                     </div>)
             }
